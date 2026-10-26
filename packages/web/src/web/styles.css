@@ -1,0 +1,375 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ==========================================================================
+   Global Center Pharma — design tokens & base styles
+   Voir design.md à la racine du projet.
+   ========================================================================== */
+
+@theme inline {
+  --font-display: "Montserrat", "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Open Sans", "Cairo", ui-sans-serif, system-ui, sans-serif;
+
+  --color-blue: var(--gcp-blue);
+  --color-navy: var(--gcp-navy);
+  --color-leaf: var(--gcp-leaf);
+  --color-leaf-ink: var(--gcp-leaf-ink);
+  --color-mint: var(--gcp-mint);
+  --color-mist: var(--gcp-mist);
+  --color-slate: var(--gcp-slate);
+  --color-ink: var(--gcp-ink);
+  --color-line: var(--gcp-line);
+
+  --color-background: #ffffff;
+  --color-foreground: var(--gcp-ink);
+  --color-border: var(--gcp-line);
+  --color-ring: var(--gcp-blue);
+}
+
+:root {
+  --gcp-blue: #0b5c8c;
+  --gcp-navy: #073a59;
+  --gcp-leaf: #6db33f;
+  --gcp-leaf-ink: #3b7a1c;
+  --gcp-mint: #eef6e7;
+  --gcp-mist: #eef5fa;
+  --gcp-slate: #5b6b78;
+  --gcp-ink: #13293d;
+  --gcp-line: #e1e9ef;
+  --shadow-card: 0 10px 30px -12px rgba(11, 92, 140, 0.18);
+  --shadow-lift: 0 24px 50px -20px rgba(11, 92, 140, 0.3);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    line-height: 1.7;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--gcp-ink);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+  /* Arabe : Cairo partout, pas d'interlettrage négatif */
+  html[lang="ar"] body,
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] h4 {
+    font-family: "Cairo", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0;
+  }
+  html[lang="ar"] h1,
+  html[lang="ar"] h2 {
+    line-height: 1.35;
+  }
+  /* Focus visible accessible (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 3px solid var(--gcp-blue);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: var(--gcp-leaf);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .container-gcp {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-gcp {
+      padding-inline: 2rem;
+    }
+  }
+
+  .section {
+    padding-block: 4.5rem;
+  }
+  @media (min-width: 1024px) {
+    .section {
+      padding-block: 7rem;
+    }
+  }
+
+  .h1 {
+    font-size: clamp(2.3rem, 5vw, 4.1rem);
+    font-weight: 800;
+  }
+  .h2 {
+    font-size: clamp(1.75rem, 3.2vw, 2.65rem);
+    font-weight: 700;
+  }
+  .lead {
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    color: var(--gcp-slate);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gcp-leaf-ink);
+  }
+  html[lang="ar"] .eyebrow {
+    letter-spacing: 0;
+    font-size: 0.9rem;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--gcp-line);
+    border-radius: 20px;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Boutons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease,
+      color 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn-primary {
+    background: var(--gcp-blue);
+    color: #fff;
+    box-shadow: 0 10px 24px -10px rgba(11, 92, 140, 0.55);
+  }
+  .btn-primary:hover {
+    background: var(--gcp-navy);
+  }
+  .btn-outline {
+    border: 1.5px solid var(--gcp-blue);
+    color: var(--gcp-blue);
+    background: rgba(255, 255, 255, 0.85);
+  }
+  .btn-outline:hover {
+    background: var(--gcp-blue);
+    color: #fff;
+  }
+  .btn-white {
+    background: #fff;
+    color: var(--gcp-navy);
+  }
+  .btn-white:hover {
+    background: var(--gcp-mint);
+  }
+  .btn-ghost-white {
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    color: #fff;
+  }
+  .btn-ghost-white:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Champs de formulaire */
+  .field-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gcp-ink);
+    margin-bottom: 0.4rem;
+  }
+  .field {
+    width: 100%;
+    min-height: 48px;
+    border: 1.5px solid var(--gcp-line);
+    border-radius: 14px;
+    padding: 0.7rem 1rem;
+    background: #fff;
+    color: var(--gcp-ink);
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+  }
+  .field::placeholder {
+    color: #7a8893;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--gcp-blue);
+    box-shadow: 0 0 0 4px rgba(11, 92, 140, 0.12);
+  }
+  .field[aria-invalid="true"] {
+    border-color: #c0392b;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: var(--gcp-mint);
+    color: var(--gcp-leaf-ink);
+  }
+  .chip-blue {
+    background: var(--gcp-mist);
+    color: var(--gcp-blue);
+  }
+
+  /* Texte riche (articles, pages légales) */
+  .prose-gcp h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 2.2rem 0 0.8rem;
+  }
+  .prose-gcp h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 1.6rem 0 0.5rem;
+  }
+  .prose-gcp p {
+    margin: 0 0 1rem;
+    color: #2c3e4f;
+  }
+  .prose-gcp ul {
+    list-style: disc;
+    padding-inline-start: 1.4rem;
+    margin: 0 0 1rem;
+    color: #2c3e4f;
+  }
+  .prose-gcp li {
+    margin-bottom: 0.35rem;
+  }
+  .prose-gcp a {
+    color: var(--gcp-blue);
+    text-decoration: underline;
+  }
+
+  /* Fond décoratif : maillage doux bleu/vert */
+  .mesh {
+    background:
+      radial-gradient(60% 50% at 10% 0%, rgba(109, 179, 63, 0.14), transparent 60%),
+      radial-gradient(50% 60% at 100% 30%, rgba(11, 92, 140, 0.12), transparent 60%),
+      #fff;
+  }
+  .leaf-pattern {
+    background-image: radial-gradient(rgba(109, 179, 63, 0.18) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
+
+/* ------- Animations au scroll (composant <Reveal>) ------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-in {
+  opacity: 0;
+  animation: hero-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .hero-in {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .float-soft {
+    animation: none;
+  }
+}
+
+/* Dialogs natifs */
+dialog::backdrop {
+  background: rgba(7, 58, 89, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+/* Lien d'évitement */
+.skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: -100px;
+  z-index: 100;
+  background: var(--gcp-blue);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 1rem;
+}

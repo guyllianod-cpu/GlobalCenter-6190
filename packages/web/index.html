@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Global Center Pharma — Cosmétiques et produits pharmaceutiques bio à base de plantes</title>
+		<meta name="description" content="Global Center Pharma conçoit des produits cosmétiques et pharmaceutiques biologiques, issus de plantes médicinales sélectionnées avec soin. Naturel, traçabilité, qualité contrôlée." />
+		<meta name="theme-color" content="#0B5C8C" />
+		<meta name="robots" content="index, follow" />
+
+		<!-- Icônes : emblème seul -->
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" type="image/png" href="/brand/icon-192.png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+
+		<!-- Open Graph / Twitter -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Global Center Pharma" />
+		<meta property="og:title" content="Global Center Pharma — La nature qui soigne, la science qui garantit." />
+		<meta property="og:description" content="Cosmétiques et produits pharmaceutiques biologiques issus de plantes médicinales." />
+		<meta property="og:image" content="/og-image.jpg" />
+		<meta property="og:locale" content="fr_FR" />
+		<meta property="og:locale:alternate" content="en_US" />
+		<meta property="og:locale:alternate" content="ar_AR" />
+		<meta name="twitter:card" content="summary_large_image" />
+
+		<!-- Polices : Montserrat (titres), Open Sans (texte), Cairo (arabe) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="preload" as="image" href="/images/hero.webp" fetchpriority="high" />
+
+		<!-- Données structurées : organisation -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "Global Center Pharma",
+				"slogan": "La nature qui soigne, la science qui garantit.",
+				"description": "Fabricant de produits cosmétiques et pharmaceutiques biologiques à base de plantes médicinales.",
+				"logo": "/brand/icon-512.png",
+				"image": "/og-image.jpg"
+			}
+		</script>
+	</head>
+	<body>
+		<div id="root"></div>
+		<noscript>
+			<p style="padding:2rem;font-family:sans-serif">Global Center Pharma — cosmétiques et produits pharmaceutiques bio à base de plantes médicinales. Activez JavaScript pour consulter le site.</p>
+		</noscript>
+		<script type="module" src="/src/web/main.tsx"></script>
+	</body>
+</html>
